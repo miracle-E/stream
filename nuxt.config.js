@@ -13,7 +13,13 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
-        rel: 'stylesheet', href: 'link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap"'}
+        rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap"},
+        {
+          rel:'stylesheet', href:"https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+        },
+        {
+          rel:'stylesheet', href:"https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Reggae+One&display=swap"
+        }
     ]
   },
 
@@ -37,14 +43,40 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
       'bootstrap-vue/nuxt',
-      // '@nuxtjs/axios',
+      '@nuxtjs/axios',
       // '@nuxtjs/pwa',
-      // '@nuxtjs/auth',
-      // '@nuxtjs/dotenv',
+      '@nuxtjs/auth',
+      '@nuxtjs/dotenv',
       // 'nuxt-buefy',
       // 'nuxt-lazy-load',
     
   ],
+  axios: {
+    baseUrl: process.env.API_URL || 'https://api.themoviedb.org',
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: `/3/authentication/token/validate_with_login?${process.env.API_KEY}`,
+            method: "post",
+            propertyName: "data"
+          }
+        }
+      },
+      local2:{
+        endpoints: {
+          login: {
+            url: `/3/authentication/guest_session/new?api_key=${process.env.API_KEY}`,
+            method: "get",
+            propertyName: "data"
+          }
+        }
+      }
+    }
+
+  },
     bootstrapVue: {
       icons: true,
       componentPlugins: [

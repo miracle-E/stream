@@ -63,7 +63,7 @@ export default {
   /* background-image: url(~static/b.jpg);
   background-size:cover; */
   height:100vh;
-   background: linear-gradient(45deg,#00303e, #00303e, #08b6ec99);
+   background: linear-gradient(45deg,#020202, #00303e, #08b6ec99);
 }
 .login > div {
   /* background: linear-gradient(#00303e, #00303e, #08b6ec99); */
